@@ -7,6 +7,7 @@ import {DataTableComponent} from './data-table.component';
 import {RouterModule} from '@angular/router';
 
 import {PipesModule} from '../../modules/pipes/pipes.module';
+import {MaterialModule} from '../../modules/material/material.module';
 
 @NgModule({
   imports: [
