@@ -1,0 +1,99 @@
+<div class="user__form">
+  <div class="row">
+    <div *ngIf="(user | async) as user" class="user__info_card">
+      <form class="user__info">
+        <div class="user__info_header bg-info text-light text-center mb-2 rounded">
+          <h4 class="mb-0">User "{{user.name}}" profile (id: {{user.id}})</h4>
+        </div>
+        <div class="form-group">
+          <label for="inputFullName">Full name</label>
+          <input
+            #name="ngModel"
+            id="inputFullName"
+            type="text"
+            name="name"
+            required
+            minlength="3"
+            class="form-control"
+            placeholder="Enter your full name"
+            aria-describedby="nameHelp"
+            [(ngModel)]="user.name">
+          <small class="text text-danger" *ngIf="name.errors.minlength">Name is too short!</small>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">Email address</label>
+          <input
+            #email="ngModel"
+            id="inputEmail"
+            type="text"
+            name="login"
+            email
+            class="form-control"
+            placeholder="Enter your e-mail"
+            aria-describedby="emailHelp"
+            [(ngModel)]="user.email">
+          <small class="text text-danger" *ngIf="email.errors.email">Type correct email!</small>
+        </div>
+        <div class="form-group">
+          <label for="InputPhoneNumber">Phone Number</label>
+          <input
+            #phone="ngModel"
+            id="InputPhoneNumber"
+            type="text"
+            name="phone"
+            required
+            pattern=""
+            class="form-control"
+            placeholder="Enter your phone number"
+            aria-describedby="phoneHelp"
+            [(ngModel)]="user.phone">
+          <small class="text text-danger" *ngIf="phone.errors?.pattern">Your phone number is not correct</small>
+        </div>
+        <div class="form-group">
+          <label for="InputPassword1">New Password</label>
+          <input
+            #password="ngModel"
+            id="InputPassword1"
+            type="password"
+            name="password"
+            required
+            minlength="6"
+            maxlength="6"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{0,6}"
+            class="form-control"
+            placeholder="Enter your new password"
+            aria-describedby="passHelp"
+            ngModel>
+          <small class="text text-danger" *ngIf="password.errors?.minlength">Your password's length is less then 6
+            symbols<br></small>
+          <small class="text text-danger" *ngIf="password.errors?.pattern">
+            The password must contain small letters, capital letters, numbers, and any special characters</small>
+        </div>
+        <div class="form-group">
+          <label for="InputPassword2">Confirm New Password</label>
+          <input
+            #confirmPassword="ngModel"
+            id="InputPassword2"
+            type="password"
+            name="confirmPassword"
+            required
+            minlength="6"
+            maxlength="6"
+            [equalTo]="password"
+            class="form-control"
+            placeholder="Confirm your new password"
+            aria-describedby="passHelp"
+            ngModel>
+          <small class="text text-danger" *ngIf="confirmPassword.errors?.equalTo">Your passwords are not
+            equal<br></small>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-info mt-2"
+          (click)="saveInfo(user)">
+          Save Info
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

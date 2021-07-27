@@ -1,0 +1,74 @@
+<div class="auth__form">
+  <form class="user__auth">
+    <mat-card>
+      <mat-card-header>
+        <h3
+          class="bg-info text-light text-center mb-0 w-100 h-100"
+          fxLayout
+          fxLayoutAlign="space-around center">
+          LOGIN
+        </h3>
+      </mat-card-header>
+
+      <mat-card-content class="mt-3 px-3">
+        <div class="form-group">
+          <label for="inputEmail1">Email address</label>
+
+          <input
+            #login="ngModel"
+            id="inputEmail1"
+            type="text"
+            name="login"
+            required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+            class="form-control"
+            placeholder="Enter your e-mail"
+            aria-describedby="emailHelp"
+            [(ngModel)]="currentMail">
+
+          <small class="text text-danger" *ngIf="login.errors?.pattern">Type correct email!</small>
+        </div>
+
+        <div class="form-group">
+          <label for="InputPassword">Password</label>
+
+          <input
+            #pass="ngModel"
+            id="InputPassword"
+            type="password"
+            name="pass"
+            required
+            minlength="8"
+            maxlength="8"
+            pattern="(?=.*\d)(?=.*[a-z]).{0,8}"
+            class="form-control"
+            placeholder="Enter your password"
+            aria-describedby="passHelp"
+            [(ngModel)]="currentPass">
+
+          <small class="text text-danger" *ngIf="pass.errors?.minlength">Your password's length is less then 6
+            symbols<br>
+          </small>
+
+          <small class="text text-danger" *ngIf="pass.errors?.pattern">
+            The password must contain small letters, capital letters, numbers, and any special characters
+          </small>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions
+        class="p-3"
+        align="end">
+        <mat-divider class="w-100"></mat-divider>
+        <button
+          class="btn btn-info mt-3"
+          type="submit"
+          (click)="logInEv([this.currentMail, this.currentPass])"
+          [disabled]="pass.invalid || login.invalid">
+
+          Submit
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

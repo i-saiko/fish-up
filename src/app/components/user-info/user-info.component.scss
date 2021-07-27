@@ -1,0 +1,23 @@
+.user__info {
+  width: 600px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  margin: 0 0 0 -125px;
+}
+
+.error-hidden {
+  display: none;
+}
+
+.ng-untouched.form-control {
+  border: 1px solid #ced4da;
+}
+
+.ng-invalid.ng-touched.form-control {
+  border: 1px solid red;
+}
+
+.ng-invalid.ng-touched + div {
+  display: block;
+}

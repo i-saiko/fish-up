@@ -1,0 +1,15 @@
+<app-header
+  (signOut)="logOut()"
+  [isLoggedIn]="isLoggedIn"
+  [userName]="userName">
+</app-header>
+<div class="portal-body">
+<app-sidebar
+  [sideBarElements]="sideBarElements"
+  [reportsSaved]="reportsSaved">
+  <ng-template let-element>
+    <mat-icon color="primary">{{classes[sideBarElements.indexOf(element)]}}</mat-icon>
+  </ng-template>
+</app-sidebar>
+<router-outlet></router-outlet>
+</div>

@@ -1,0 +1,59 @@
+<header class="header container-fluid">
+  <nav class="navbar navbar-dark sticky-top bg-dark h-100">
+
+    <button
+      class="logo btn btn-info btn-lg br0 p-2"
+      fxLayout
+      fxLayoutAlign="space-around center">
+
+      STORE PORTAL
+    </button>
+
+<!--    <div-->
+<!--      *ngIf="isLoggedIn"-->
+<!--      class="header__auth row">-->
+
+<!--      <div class="dropdown">-->
+<!--        <button-->
+<!--          class="btn btn-outline-info dropdown-toggle p-1 br0"-->
+<!--          fxLayout-->
+<!--          fxLayoutAlign=" center"-->
+<!--          type="button"-->
+<!--          data-toggle="dropdown"-->
+<!--          aria-haspopup="true"-->
+<!--          aria-expanded="false">-->
+
+<!--          Hi, {{userName}}-->
+
+<!--          <img-->
+<!--            class="img-fluid rounded-circle user__img ml-2"-->
+<!--            fxLayout-->
+<!--            fxLayoutAlign="space-around center"-->
+<!--            src="https://clipartart.com/images250_/default-profile-picture-clipart-3.jpg"-->
+<!--            alt="{{userName}}">-->
+
+<!--          <span class="sr-only">Toggle Dropdown</span>-->
+<!--        </button>-->
+
+<!--        <div class="dropdown-menu">-->
+
+<!--          <a class="dropdown-item" href="#">Action</a>-->
+
+<!--          <a class="dropdown-item" href="#">Another action</a>-->
+
+<!--          <a class="dropdown-item" href="#">Something else here</a>-->
+
+<!--          <div class="dropdown-divider"></div>-->
+
+<!--          <a class="dropdown-item" href="#">Separated link</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <button
+        class="btn btn-info br0 px-2"
+        title="Выйти" (click)="logOutEv()">
+        Выйти
+      </button>
+<!--    </div>-->
+  </nav>
+</header>
