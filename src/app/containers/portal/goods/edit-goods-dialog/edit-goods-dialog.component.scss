@@ -1,0 +1,58 @@
+.dialog-title {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.dialog-typography {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.dialog-content {
+  ::ng-deep .mat-dialog-content {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+::ng-deep .dialog-container {
+  .mat-dialog-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.uppercase-text {
+  text-transform: uppercase;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 70%;
+  }
+}
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+.list-hide {
+  display: none;
+}
+
+.list-show {
+  display: block;
+}
+
+::ng-deep .mat-optgroup-label {
+  padding: 0 !important;
+  height: auto !important;
+
+  button:focus {
+    outline: none !important;
+  }
+}

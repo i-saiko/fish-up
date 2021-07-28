@@ -18,11 +18,13 @@ import {RestService} from './rest/rest.service';
 import {AuthInterceptor} from './rest/auth.interceptor';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFirestoreModule, SETTINGS} from '@angular/fire/firestore';
 import {environment} from '../environments/environment';
 import {NgAuthService} from './modules/services/auth.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
+import {MaterialModule} from './modules/material/material.module';
+import {PortalModule} from './containers/portal/portal.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +43,7 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatIconModule,
+    PortalModule,
   ],
   providers: [
     AuthorizationService,
@@ -49,6 +52,7 @@ import {MatIconModule} from '@angular/material/icon';
     NgAuthService,
     NotificationService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: SETTINGS, useValue: {experimentalAutoDetectLongPolling: true}},
   ],
   bootstrap: [AppComponent]
 })

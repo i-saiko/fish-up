@@ -8,9 +8,13 @@ const routes: Routes = [
     component: PortalComponent,
     children: [
       {
-        path: '',
+        path: 'goods',
+        loadChildren: () => import('./goods/goods.module').then(m => m.GoodsModule)
+      },
+      {
+        path: 'users',
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
-      }
+      },
     ]
   }
 ];

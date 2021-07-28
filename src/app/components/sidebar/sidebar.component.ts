@@ -1,5 +1,6 @@
-import {Component, ContentChild, ElementRef, Input, OnInit, TemplateRef} from '@angular/core';
-import {AuthorizationService} from "../../modules/services/authorization.service";
+import {Component, ContentChild, ElementRef, Input, TemplateRef} from '@angular/core';
+import {AuthorizationService} from '../../modules/services/authorization.service';
+import {MAIN_MENU_CONTENT, MainMenuInfo} from './menu-list';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,6 +18,8 @@ export class SidebarComponent {
   selected: string;
   startItem = 0;
   itemLimit = 0;
+
+  menu: MainMenuInfo[] = MAIN_MENU_CONTENT;
 
   constructor(private token: AuthorizationService) {
   }

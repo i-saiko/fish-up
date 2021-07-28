@@ -1,0 +1,28 @@
+<div
+  class="d-flex justify-content-between align-items-center p-2">
+  <h2>Поступления</h2>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openGoodsEditDialog()">
+    <mat-icon>add_circle_outline</mat-icon>
+    <span class="ml-1">Внести новое</span>
+  </button>
+</div>
+
+<div class="p-2">
+  <mat-form-field appearance="fill">
+
+    <mat-label>{{'Дата поступления'}}</mat-label>
+    <input
+      matInput
+      placeholder="{{'Дата поступления'}}"
+      [formControl]="incomeDate"
+      [matDatepicker]="dateCreatedPicker"
+      required
+      disabled>
+
+    <mat-datepicker-toggle matSuffix [for]="dateCreatedPicker"></mat-datepicker-toggle>
+    <mat-datepicker #dateCreatedPicker></mat-datepicker>
+  </mat-form-field>
+</div>

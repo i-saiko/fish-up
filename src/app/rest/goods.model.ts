@@ -1,10 +1,6 @@
 import {StoragePlacesEnum} from '../enums/storage-places.enum';
 
-export class GoodsModel {
-  id: string;
-  user: Record<string, string>;
-  creationDate: Date;
-  storagePlace: StoragePlacesEnum;
+export class GoodsNames {
   fish01: number;
   fish02: number;
   fish03: number;
@@ -29,4 +25,13 @@ export class GoodsModel {
   fish22: number;
   fish23: number;
   fish25: number;
+}
+
+export class GoodsModel {
+  id?: string;
+  userName: string;
+  dateCreated: Date;
+  contactName: string;
+  warehouse: StoragePlacesEnum;
+  goodsNames: GoodsNames;
 }

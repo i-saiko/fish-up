@@ -41,11 +41,11 @@ export class NgAuthService {
   SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.toastrService.success('Thank you', 'Login submited successfully');
+        this.toastrService.success('Спасибо!', 'Вход выполнен успешно');
         this.SetUserData(result.user);
         this.router.navigate(['/portal']);
       }).catch(() => {
-        this.toastrService.error('Wrong email or password', 'Login submited with error');
+        this.toastrService.error('Не верный email или пароль', 'Вход выполнен с ошибкой');
       });
   }
 

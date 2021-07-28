@@ -1,0 +1,131 @@
+<div
+  class="d-flex justify-content-between align-items-center mb-4 px-4"
+  mat-dialog-title>
+  <h4 class="dialog-title mb-0">{{data ? 'Изменить поступление' : 'Добавить новое поступление'}}</h4>
+</div>
+
+<mat-divider class="mb-3">
+</mat-divider>
+
+<div
+  class="h-100 dialog-content"
+  mat-dialog-content>
+
+  <form [formGroup]="form">
+    <mat-form-field class="col-6 w-100 px-4">
+      <mat-label>{{'Приемщик'}}</mat-label>
+      <input
+        class="dialog-typography"
+        formControlName="userName"
+        matInput
+        required
+        readonly
+        type="text">
+    </mat-form-field>
+
+    <mat-form-field class="col-6 w-100 px-4">
+      <mat-label>{{'Дата внесения'}}</mat-label>
+      <input
+        class="dialog-typography"
+        formControlName="dateCreated"
+        matInput
+        required
+        disabled
+        [matDatepicker]="dateCreatedPicker">
+
+      <mat-datepicker-toggle matSuffix [for]="dateCreatedPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dateCreatedPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="col-6 w-100 px-4">
+      <mat-label>{{'Место хранения'}}</mat-label>
+      <mat-select
+        class="dialog-typography"
+        formControlName="warehouse"
+        required>
+
+        <mat-option
+          *ngFor="let store of storagePlacesEnum | keyvalue"
+          [value]="store.key">
+          {{store.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-6 w-100 px-4">
+      <mat-label>{{'Поставщик'}}</mat-label>
+      <mat-select
+        class="dialog-typography"
+        formControlName="contactName"
+        required>
+        <mat-optgroup *ngFor="let group of contactGroups">
+          <div>
+            <button
+              class="d-flex align-items-center w-100"
+              mat-button
+              (click)="expandDocumentTypes(group)">
+              <mat-icon class="material-icons-outlined">
+                {{isExpandCategory[group] ? 'remove_circle_outline' : 'add_circle_outline'}}
+              </mat-icon>
+              {{group}}
+            </button>
+          </div>
+
+          <ng-container *ngFor="let contact of contacts">
+            <mat-option
+              *ngIf="contact.type === group"
+              [ngClass]="isExpandCategory[group] ? 'list-show' : 'list-hide'"
+              [value]="contact">
+              {{contact.name}}
+            </mat-option>
+          </ng-container>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+
+    <div
+      class="d-flex flex-column px-4"
+      formGroupName="goodsNames">
+
+      <ng-container *ngFor="let fish of fishEnum | keyvalue">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <mat-label class="col-3">{{fishEnum[fish.key]}}</mat-label>
+          <mat-form-field
+            class="col-9 ml-2 w-100">
+            <input
+              formControlName="{{fish.key}}"
+              matInput
+              type="number">
+          </mat-form-field>
+        </div>
+      </ng-container>
+    </div>
+  </form>
+</div>
+
+<mat-divider class="mx-4">
+</mat-divider>
+
+<div
+  class="p-4"
+  mat-dialog-actions
+  align="end">
+  <button
+    class="uppercase-text"
+    mat-button
+    color="primary"
+    mat-dialog-close>
+    {{'отменить'}}
+  </button>
+  <button
+    class="uppercase-text"
+    mat-flat-button
+    color="primary"
+    [title]="!form.valid ? 'Заполнены не все обязательные поля' : 'Сохранить'"
+    [disabled]="!form.valid"
+    (click)="dialogRef.close(form.value)">
+    {{'Сохранить'}}
+  </button>
+</div>
+

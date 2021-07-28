@@ -1,7 +1,7 @@
 <div class="sidebar sidebar-sticky bg-light">
   <ul class="nav flex-column">
     <li
-      *ngFor="let element of sideBarElements"
+      *ngFor="let element of menu"
       fxLayout="column"
       fxLayoutAlign="center"
       (click)="select(element)"
@@ -12,15 +12,12 @@
         fxLayout
         fxLayoutAlign=" center">
 
-        <ng-template
-          [ngTemplateOutlet]="template"
-          [ngTemplateOutletContext]="{$implicit: element}">
-        </ng-template>
+        <mat-icon color="primary">{{element.iconClass}}</mat-icon>
 
         <a
           class="pl-1 active"
-          [routerLink]="element.toLowerCase()">
-          {{element}}
+          [routerLink]="element.route">
+          {{element.name}}
         </a>
       </div>
 

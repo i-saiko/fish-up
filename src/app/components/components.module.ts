@@ -12,6 +12,7 @@ import {UserInfoComponent} from './user-info/user-info.component';
 import {MatCardModule} from '@angular/material/card';
 import {FlexModule} from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -22,16 +23,17 @@ import {MatDividerModule} from '@angular/material/divider';
     UserInfoComponent,
     TableListComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    CustomFormsModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    FlexModule,
-    MatDividerModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        CustomFormsModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        FlexModule,
+        MatDividerModule,
+        MatIconModule,
+    ],
   exports: [
     HeaderComponent,
     SidebarComponent,
