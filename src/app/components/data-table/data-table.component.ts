@@ -1,5 +1,5 @@
 import {Router} from '@angular/router';
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -21,6 +21,8 @@ export class DataTableComponent<T> implements OnInit {
 
   @Input() availablePaginatorLength: number;
 
+  @Output() rowAction: EventEmitter<T> = new EventEmitter<T>();
+
   @ViewChild(MatPaginator)
   set paginator(paginator: MatPaginator) {
     if (this.tableDateSource.data.length > this.availablePaginatorLength) {
@@ -33,7 +35,6 @@ export class DataTableComponent<T> implements OnInit {
 
   constructor(
     public dateService: DateService,
-    private router: Router
   ) {}
 
   ngOnInit() {
@@ -41,9 +42,7 @@ export class DataTableComponent<T> implements OnInit {
     this.tableDateSource = new MatTableDataSource<T>(this.tableData);
   }
 
-  navigateTo(row) {
-    if (row.link) {
-      this.router.navigateByUrl(row.link);
-    }
+  rowClick(row) {
+    this.rowAction.emit(row);
   }
 }

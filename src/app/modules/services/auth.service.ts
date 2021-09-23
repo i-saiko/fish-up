@@ -15,7 +15,6 @@ export interface User {
 @Injectable({
   providedIn: 'root'
 })
-
 export class NgAuthService {
   userState: User;
 

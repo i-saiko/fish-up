@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {GoodsComponent} from './goods.component';
 import {ComponentsModule} from '../../../components/components.module';
 import {GoodsRouting} from './goods.routing';
@@ -12,6 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
+import {DataTableModule} from '../../../components/data-table/data-table.module';
 
 @NgModule({
   declarations: [GoodsComponent],
@@ -30,7 +31,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
+    DataTableModule,
   ],
+  providers: [DatePipe]
 })
 export class GoodsModule {
 }

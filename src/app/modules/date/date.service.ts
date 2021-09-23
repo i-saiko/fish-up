@@ -7,17 +7,12 @@ import {Injectable} from '@angular/core';
 })
 export class DateService {
   isDate(value): boolean {
-    return value instanceof Date || !isNaN(Date.parse(value));
+    return value instanceof Date || (!isNaN(Date.parse(value)) && !value.match(/[а-я]+/ig));
   }
 
   isNaN(value): boolean {
     return isNaN(value);
   }
-
-  // isWorkingDay(date: Moment): boolean {
-  //   const day = date.day();
-  //   return day !== 0 && day !== 6;
-  // }
 
   isMonday(date: Date): boolean {
     return date.getDay() === 1;

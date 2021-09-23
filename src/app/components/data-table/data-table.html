@@ -12,9 +12,9 @@
       <mat-header-cell *matHeaderCellDef>{{column.caption}}</mat-header-cell>
       <mat-cell
         *matCellDef="let row"
-        (click)="navigateTo(row)">
-        {{ dateService.isNaN((row[column.key])) ? (dateService.isDate(row[column.key]) ? (row[column.key] | date: 'dd.MM.yyyy HH:mm') :
-        row[column.key] ? (row[column.key] | normalizeEnum) : (row[column.key] | defaultValue:'-')) : row[column.key]
+        (click)="rowClick(row)">
+        {{ dateService.isNaN((row[column.key])) ? (dateService.isDate(row[column.key]) ? (row[column.key] | date: 'dd.MM.yyyy') :
+        row[column.key] ? row[column.key] : '-') : row[column.key]
         }}
       </mat-cell>
     </ng-container>
@@ -27,7 +27,7 @@
   <mat-paginator
     *ngIf="tableDateSource.data.length > availablePaginatorLength"
     showFirstLastButtons
-    [pageSizeOptions]="[5, 10, 20]"
+    [pageSizeOptions]="[10, 20]"
     class="table-custom__pagination">
   </mat-paginator>
 </div>

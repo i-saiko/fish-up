@@ -1,6 +1,7 @@
 import {Component, ContentChild, ElementRef, Input, TemplateRef} from '@angular/core';
 import {AuthorizationService} from '../../modules/services/authorization.service';
 import {MAIN_MENU_CONTENT, MainMenuInfo} from './menu-list';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,8 +22,10 @@ export class SidebarComponent {
 
   menu: MainMenuInfo[] = MAIN_MENU_CONTENT;
 
-  constructor(private token: AuthorizationService) {
-  }
+  constructor(
+    public router: Router,
+    private token: AuthorizationService,
+  ) {}
 
   showMoreItems() {
     this.itemLimit = this.itemLimit + 4;

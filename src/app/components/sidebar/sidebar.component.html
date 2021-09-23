@@ -10,15 +10,20 @@
       <div
         class="p-4 ml-2"
         fxLayout
-        fxLayoutAlign=" center">
+        fxLayoutAlign=" center"
+        (click)="router.navigate([element.route])">
 
-        <mat-icon color="primary">{{element.iconClass}}</mat-icon>
+          <mat-icon color="primary">
+            {{element.iconClass}}
+          </mat-icon>
 
         <a
-          class="pl-1 active"
+          class="ml-2 active"
+          fxHide.sm
           [routerLink]="element.route">
           {{element.name}}
         </a>
+
       </div>
 
       <mat-divider class="w-100"></mat-divider>

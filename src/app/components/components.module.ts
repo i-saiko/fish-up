@@ -10,9 +10,10 @@ import {CustomFormsModule} from 'ng2-validation';
 import {TableListComponent} from './table/table.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import {MatCardModule} from '@angular/material/card';
-import {FlexModule} from '@angular/flex-layout';
+import {ExtendedModule, FlexModule} from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -23,17 +24,19 @@ import {MatIconModule} from '@angular/material/icon';
     UserInfoComponent,
     TableListComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        FormsModule,
-        CustomFormsModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        FlexModule,
-        MatDividerModule,
-        MatIconModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    CustomFormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    FlexModule,
+    MatDividerModule,
+    MatIconModule,
+    ExtendedModule,
+    MatButtonModule,
+  ],
   exports: [
     HeaderComponent,
     SidebarComponent,

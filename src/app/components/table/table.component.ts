@@ -32,16 +32,4 @@ export class TableListComponent implements OnInit {
       };
     });
   }
-
-  create(goods: GoodsModel) {
-    this.goodsService.createGoods(goods);
-  }
-
-  update(goods: GoodsModel) {
-    this.goodsService.updateGoods(goods);
-  }
-
-  delete(id: string) {
-    this.goodsService.deleteGoods(id);
-  }
 }

@@ -75,7 +75,7 @@
             <mat-option
               *ngIf="contact.type === group"
               [ngClass]="isExpandCategory[group] ? 'list-show' : 'list-hide'"
-              [value]="contact">
+              [value]="contact.name">
               {{contact.name}}
             </mat-option>
           </ng-container>

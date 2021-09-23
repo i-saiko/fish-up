@@ -1,5 +1,5 @@
 <div
-  class="d-flex justify-content-between align-items-center p-2">
+  class="d-flex justify-content-between align-items-center p-4">
   <h2>Поступления</h2>
   <button
     mat-raised-button
@@ -10,19 +10,37 @@
   </button>
 </div>
 
-<div class="p-2">
+<div
+  class="d-flex align-items-center px-4"
+  [formGroup]="form">
+
   <mat-form-field appearance="fill">
 
     <mat-label>{{'Дата поступления'}}</mat-label>
     <input
       matInput
       placeholder="{{'Дата поступления'}}"
-      [formControl]="incomeDate"
+      formControlName="incomeDate"
       [matDatepicker]="dateCreatedPicker"
-      required
-      disabled>
+      required>
 
     <mat-datepicker-toggle matSuffix [for]="dateCreatedPicker"></mat-datepicker-toggle>
     <mat-datepicker #dateCreatedPicker></mat-datepicker>
   </mat-form-field>
+
+  <div
+    class="download-button d-flex justify-content-around align-items-center ml-2"
+    title="Скачать в формате XLS">
+    <i class="far fa-file-excel cursor-pointer"></i>
+  </div>
+</div>
+
+<div class="px-4">
+  <app-table
+    *ngIf="goodsTableData.length"
+    (rowAction)="openGoodsEditDialog($event)"
+    [availablePaginatorLength]="10"
+    [tableData]="goodsTableData"
+    [tableHeaderColumns]="goodsTableHeader">
+  </app-table>
 </div>

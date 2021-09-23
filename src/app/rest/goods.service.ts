@@ -8,6 +8,10 @@ export class GoodsService {
     private firestore: AngularFirestore
   ) {}
 
+  getAllGoods() {
+    return this.firestore.collection('goods').snapshotChanges();
+  }
+
   getGoods() {
     return this.firestore.collection('goods').snapshotChanges();
   }
@@ -16,9 +20,10 @@ export class GoodsService {
     return this.firestore.collection('goods').add(goods);
   }
 
-  updateGoods(goods: GoodsModel) {
-    delete goods.id;
-    this.firestore.doc('goods/' + goods.id).update(goods);
+  updateGoods(goods: GoodsModel, goodsId: string) {
+    const {id, ...updatedGood} = goods;
+
+    return this.firestore.doc('goods/' + goodsId).update(updatedGood);
   }
 
   deleteGoods(goodsId: string) {
